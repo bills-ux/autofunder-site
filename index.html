@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoFunder — See what the banks will see</title>
+<meta name="description" content="AutoFunder — see what the banks will see. One vehicle-finance application; participating banks compete for your deal. Launching soon in South Africa. AUTOFUNDER (Pty) Ltd, Reg. 2026/777357/07.">
+<meta property="og:title" content="AutoFunder — See what the banks will see">
+<meta property="og:description" content="One vehicle-finance application. Participating banks compete for your deal. Launching soon in South Africa.">
+<meta property="og:url" content="https://autofunder.co.za/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231c1b17'/%3E%3Cg stroke='%23f4eee2' stroke-width='8' stroke-linecap='square'%3E%3Cpath d='M50 14 16 88M50 14 84 88M50 30v58'/%3E%3C/g%3E%3Cpath d='M50 8 61 30H39z' fill='%23e1865a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1c1b17;--cream:#f4eee2;--stone:#c8bfb0;--copper:#e1865a;--copper-dk:#ae5327;--line:#34302a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh;-webkit-font-smoothing:antialiased}
+  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 16px}
+  .mark{width:clamp(110px,18vw,150px);height:auto;overflow:visible}
+  .leg{stroke:var(--cream);stroke-width:8;stroke-linecap:butt;fill:none;stroke-dasharray:100;stroke-dashoffset:100;animation:draw .9s cubic-bezier(.6,0,.2,1) forwards}
+  .leg.l{animation-delay:.1s}.leg.r{animation-delay:.25s}.leg.c{animation-delay:.55s}
+  .tip{fill:url(#cu);opacity:0;transform-origin:50px 16px;animation:tip .6s ease-out 1.1s forwards}
+  .glow{fill:var(--copper);opacity:0;filter:blur(6px);animation:glow 2.4s ease-in-out 1.4s infinite}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes tip{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+  @keyframes glow{0%,100%{opacity:0}50%{opacity:.55}}
+  .word{margin-top:30px;font-family:"Playfair Display",Didot,"Bodoni 72",Georgia,serif;font-weight:800;font-size:clamp(40px,8vw,72px);letter-spacing:-.01em;line-height:1}
+  .word span{color:var(--copper)}
+  .tag{margin-top:18px;font-family:"Playfair Display",Didot,Georgia,serif;font-weight:700;font-size:clamp(20px,3.4vw,30px);letter-spacing:-.01em}
+  .fade{opacity:0;animation:rise .8s ease-out forwards}
+  .d1{animation-delay:1.5s}.d2{animation-delay:2.1s}.d3{animation-delay:2.8s}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .lede{margin-top:26px;font-size:clamp(16px,2.2vw,18px);line-height:1.55;color:var(--stone);max-width:30em}
+  .status{margin-top:24px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:14px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--copper);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .contact{margin-top:20px;font-size:15px;color:var(--stone)}
+  a{color:var(--cream);text-underline-offset:3px}
+  footer{border-top:1px solid #2c2924;padding:22px 16px 26px;font-size:12.5px;line-height:1.7;color:#9c9384;text-align:center}
+  footer strong{color:var(--stone);font-weight:600}
+  footer p+p{margin-top:6px}
+  @media (prefers-reduced-motion:reduce){.leg{stroke-dashoffset:0;animation:none}.tip,.fade{opacity:1;animation:none}.glow,.dot{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="AutoFunder logo">
+    <defs><linearGradient id="cu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0a37c"/><stop offset="1" stop-color="#ae5327"/></linearGradient></defs>
+    <circle class="glow" cx="50" cy="16" r="10"/>
+    <path class="leg l" pathLength="100" d="M50 4 L4 98"/>
+    <path class="leg r" pathLength="100" d="M50 4 L96 98"/>
+    <path class="leg c" pathLength="100" d="M50 24 L50 98"/>
+    <path class="tip" d="M50 2 L61 25 L39 25 Z"/>
+  </svg>
+  <h1 class="word fade d1">Auto<span>Funder</span></h1>
+  <p class="tag fade d2">See what the banks will see.</p>
+  <div class="fade d3">
+    <p class="lede">One vehicle-finance application. Participating banks compete for your deal.</p>
+    <div class="status"><span class="dot" aria-hidden="true"></span>Launching soon in South Africa</div>
+    <p class="contact">Dealers, banks and partners: <a href="mailto:admin@autofunder.co.za">admin@autofunder.co.za</a></p>
+  </div>
+</main>
+<footer>
+  <p><strong>AUTOFUNDER (Pty) Ltd</strong> &middot; Registration No. 2026/777357/07</p>
+  <p>180 President Brand Road, Rynfield, Benoni, Gauteng, 1514, South Africa &middot; <a href="tel:+27784112220">+27 78 411 2220</a> &middot; <a href="mailto:admin@autofunder.co.za">admin@autofunder.co.za</a></p>
+  <p>AutoFunder does not grant credit. Finance is provided by the participating banks, subject to their own credit assessment. This page collects no personal information and sets no cookies.</p>
+  <p>&copy; 2026 AUTOFUNDER (Pty) Ltd</p>
+</footer>
+</body>
+</html>
