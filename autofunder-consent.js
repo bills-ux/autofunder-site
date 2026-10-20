@@ -94,6 +94,7 @@
 
   /* ---------- banner ---------- */
   var CSS =
+    ".af-cc,.af-cc *{box-sizing:border-box}" +
     ".af-cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;max-width:760px;" +
     "margin:0 auto;background:" + T.bg + ";color:" + T.fg + ";border-radius:12px;padding:14px 16px;" +
     "box-shadow:" + T.shadow + ";font:14px/1.45 'IBM Plex Sans',system-ui,-apple-system,sans-serif;" +
@@ -109,21 +110,25 @@
     ".af-cc .af-acc{background:" + T.accBg + ";color:" + T.accFg + "}" +
     ".af-cc .af-rej{background:transparent;color:" + T.fg + "}" +
     ".af-cc button:focus-visible,.af-cc a:focus-visible,.af-cc input:focus-visible+.af-sw{outline:3px solid " + T.link + ";outline-offset:2px}" +
-    /* bank-style layout */
-    ".af-cc.af-bank{display:block;max-width:880px;padding:18px 20px}" +
-    ".af-cc .af-h{font:600 16px/1.3 Fraunces,Georgia,serif;margin:0 0 6px;color:" + T.fg + "}" +
-    ".af-cc.af-bank p{margin:0 0 14px}" +
-    ".af-cc .af-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}" +
-    ".af-cc .af-btns button{flex:0 1 180px}" +
-    "@media (max-width:520px){.af-cc .af-btns button{flex:1 1 140px}}" +
+    /* bank style: a simple box, bottom left (like RMB), same on every page */
+    ".af-cc.af-bank{display:block;left:16px;right:auto;margin:0;max-width:400px;width:calc(100% - 32px);" +
+    "padding:24px;border-radius:6px;background:#1d1a17;color:#f4ede1;border:1px solid rgba(244,237,225,.22);" +
+    "box-shadow:0 12px 40px rgba(0,0,0,.45);font-size:15px;line-height:1.5}" +
+    ".af-cc.af-bank p{margin:0 0 18px;color:#f4ede1}" +
+    ".af-cc.af-bank a{color:#e0865a}" +
+    ".af-cc .af-h{font:600 17px/1.3 Fraunces,Georgia,serif;margin:0 0 8px;color:#f4ede1}" +
+    ".af-cc .af-btns{display:flex;flex-direction:column;gap:12px}" +
+    ".af-cc.af-bank button{width:100%;flex:none;min-height:48px;border-radius:4px;font-size:15px;letter-spacing:.02em}" +
+    ".af-cc.af-bank .af-acc{background:#e0865a;color:#1d1a17;border:2px solid #e0865a}" +
+    ".af-cc.af-bank .af-rej{background:#f4ede1;color:#ae5228;border:2px solid #e0865a}" +
     ".af-cc .af-cat{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;" +
-    "padding:12px 0;border-top:1px solid " + T.line + "33}" +
-    ".af-cc .af-cat b{display:block;color:" + T.fg + ";margin-bottom:2px}" +
-    ".af-cc .af-cat span.d{color:" + T.txt + ";font-size:13px}" +
-    ".af-cc .af-on{font-size:13px;font-weight:600;white-space:nowrap;color:" + T.fg + ";padding-top:2px}" +
+    "padding:12px 0;border-top:1px solid rgba(244,237,225,.18)}" +
+    ".af-cc .af-cat b{display:block;color:#f4ede1;margin-bottom:2px}" +
+    ".af-cc .af-cat span.d{color:rgba(244,237,225,.75);font-size:13px}" +
+    ".af-cc .af-on{font-size:13px;font-weight:600;white-space:nowrap;color:#f4ede1;padding-top:2px}" +
     ".af-cc label.af-tg{position:relative;flex:0 0 46px;height:26px;cursor:pointer}" +
     ".af-cc label.af-tg input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}" +
-    ".af-cc .af-sw{display:block;width:46px;height:26px;border-radius:13px;background:" + T.txt + "55;transition:background .15s}" +
+    ".af-cc .af-sw{display:block;width:46px;height:26px;border-radius:13px;background:rgba(244,237,225,.3);transition:background .15s}" +
     ".af-cc .af-sw:after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}" +
     ".af-cc input:checked+.af-sw{background:#2e7d32}" +
     ".af-cc input:checked+.af-sw:after{left:23px}" +
@@ -176,13 +181,11 @@
   /* Bank style, layer 1: what most SA banks show. */
   function showBank() {
     build(
-      '<div class="af-h" id="af-cc-title">We value your privacy</div>' +
-      "<p>We use cookies on our website to improve our services, keep our website secure, and serve you " +
-      "more relevant content. Choose which cookies you consent to via the buttons below. " +
-      'To find out more see our <a href="' + POLICY_URL + '">Cookies Policy</a>.</p>' +
+      '<p id="af-cc-title">We use cookies to provide you with the best possible online experience. ' +
+      '<a href="' + POLICY_URL + '">AutoFunder cookie policy</a></p>' +
       '<div class="af-btns">' +
-      '<button type="button" class="af-rej af-manage">Manage cookies</button>' +
       '<button type="button" class="af-acc">Accept all</button>' +
+      '<button type="button" class="af-rej af-manage">Cookie Settings</button>' +
       "</div>", "af-bank");
     banner.querySelector(".af-acc").addEventListener("click", function () { decide(true); });
     banner.querySelector(".af-manage").addEventListener("click", showPrefs);
@@ -205,9 +208,9 @@
       '<label class="af-tg"><input type="checkbox" class="af-ads" aria-labelledby="af-ads-l"' + (on ? " checked" : "") +
       '><span class="af-sw"></span></label></div>' +
       '<div class="af-btns" style="margin-top:8px">' +
-      '<button type="button" class="af-rej af-none">Reject all</button>' +
-      '<button type="button" class="af-rej af-save">Save my choices</button>' +
       '<button type="button" class="af-acc">Accept all</button>' +
+      '<button type="button" class="af-rej af-save">Save my choices</button>' +
+      '<button type="button" class="af-rej af-none">Reject all</button>' +
       "</div></div>", "af-bank");
     banner.querySelector(".af-acc").addEventListener("click", function () { decide(true); });
     banner.querySelector(".af-none").addEventListener("click", function () { decide(false); });
